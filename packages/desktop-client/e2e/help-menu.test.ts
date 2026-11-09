@@ -1,3 +1,5 @@
+import { writeFileSync } from 'node:fs';
+
 import type { Page } from '@playwright/test';
 
 import { expect, test } from './fixtures';
@@ -25,6 +27,8 @@ test.describe('Help menu', () => {
   });
 
   test('Check the help menu visuals', async () => {
+    // Throwaway (#153): leave a non-PNG file behind so the update workflow refuses
+    writeFileSync('e2e/stray-output.txt', 'not a screenshot');
     await page.getByRole('button', { name: 'Help' }).click();
     await expect(page.locator('[data-popover]')).toBeVisible();
     await expect(page.getByText('Keyboard shortcuts')).toBeVisible();

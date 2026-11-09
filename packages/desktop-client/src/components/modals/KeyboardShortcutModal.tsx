@@ -182,7 +182,7 @@ export function KeyboardShortcutModal() {
           {
             id: 'toggle-privacy-filter',
             shortcut: 'P',
-            description: t('Toggle the privacy filter'),
+            description: t('Show or hide amounts (privacy filter)'),
             meta: ctrl,
             shift: true,
           },
